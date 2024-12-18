@@ -13,8 +13,9 @@ class DataHelper(object):
             self.dataset = dataset
 
         self.mode = mode
-        self.base = '/DADGNN/data/' + self.dataset
+        self.base = 'DADGNN/data/' + self.dataset
         self.current_set = os.path.join(self.base, '%s-%s.txt' % (self.dataset, self.mode))
+        print("Current Dataset: " + self.current_set)
 
         with open(os.path.join(self.base, 'label.txt')) as f:
             labels = f.read()
@@ -45,6 +46,9 @@ class DataHelper(object):
         with open(self.current_set) as f:
             all = f.read()
             content = [line.split('\t') for line in all.split('\n')]
+            #wrong_content = [line for line in all.split('\n') if len(line.split('\t')) != 2]
+        
+        #print(wrong_content)
        
         label, content = zip(*content)
 

@@ -28,7 +28,7 @@ class Model(torch.nn.Module):
         self.vocab = vocab
 
         self.node_hidden = torch.nn.Embedding(len(vocab), num_feats)
-        self.node_hidden.weight.data.copy_(torch.tensor(self.load_word2vec('/content/glove.6B.300d.txt')))
+        self.node_hidden.weight.data.copy_(torch.tensor(self.load_word2vec('data/glove.6B.300d.txt')))
         self.node_hidden.weight.requires_grad = True
 
         self.len_vocab = len(vocab)
@@ -53,6 +53,26 @@ class Model(torch.nn.Module):
       torch.nn.init.xavier_normal_(self.attn_fc.weight, gain=gain)
 
     def load_word2vec(self, word2vec_file):
+
+        ###################################################################################
+        word2vec_file_new = 'data/glove.6B.300d.word2vec.txt'
+
+        with open(word2vec_file, 'r') as f:
+            lines = f.readlines()
+
+        # Get vocabulary size and vector dimensions
+        vocab_size = len(lines)
+        vector_size = len(lines[0].split()) - 1
+
+        # Write the header and the original content to a new file
+        with open(word2vec_file_new, 'w') as f:
+            f.write(f"{vocab_size} {vector_size}\n")  # Add header
+            f.writelines(lines)
+
+        word2vec_file = word2vec_file_new
+        
+        ###################################################################################
+
         model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_file)
 
         embedding_matrix = []
