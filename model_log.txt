@@ -1,0 +1,2 @@
+Training started.
+Dataset: sst-2, Model Name: model

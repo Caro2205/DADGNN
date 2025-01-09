@@ -8,6 +8,7 @@ import argparse
 import time, datetime
 import os
 import warnings
+import wandb
 
 warnings.filterwarnings("ignore")
 NUM_ITER_EVAL = 100
@@ -19,6 +20,12 @@ def get_time_dif(start_time):
     time_dif = end_time - start_time
     return datetime.timedelta(seconds=int(round(time_dif)))
 
+def log_to_file(filename, message):
+    safe_filename = filename.replace(":", "-").replace(" ", "_")
+    with open('DADGNN/logs/' + safe_filename, "a") as file:
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        file.write(f"[{timestamp}] {message}\n")
+    print(f"Logged to {safe_filename}: {message}")
 
 def dev(model, dataset, dev_data_helper):
     model.eval()
@@ -64,7 +71,22 @@ def test(model, dataset):
     return torch.div(correct, total_pred).to('cpu').numpy()
 
 
-def train(ngram, name, wd, bar, drop_out, num_hidden, num_layers, num_heads, k, alpha, dataset, is_cuda, edges=True):
+def train(ngram, name, wd, bar, drop_out, num_hidden, num_layers, num_heads, k, alpha, dataset, is_cuda, log_filename, edges=True):
+
+    # initialize logging with wandb
+    wandb.init(project=name,
+               config={
+                   "dataset": dataset,
+                   "k": k,
+                   "dropout": drop_out,
+                   "N hidden layers": num_hidden,
+                   "N layers": num_layers,
+                   "N attention heads": num_heads,
+                   "weight decay": wd,
+                   "alpha": alpha,
+                   "trainable edges": edges,
+                   "random seed": args.rand
+               })
 
     print('load data helper.')
     path = 'DADGNN/data/' + dataset + '/' + dataset + '-vocab.txt'
@@ -131,6 +153,16 @@ def train(ngram, name, wd, bar, drop_out, num_hidden, num_layers, num_heads, k, 
                   + 'Val Acc: {2:>7.2%}, Time: {3}{4}' \
                   # + ' Time: {5} {6}'
 
+            log_to_file(log_filename, f'Iter: {iter}; Validation Accuracy: {val_acc}; Best Accuracy: {best_acc}')
+
+            wandb.log({
+                "Iteration": iter,
+                "Validation Accuracy": val_acc,
+                "Best Accuracy": best_acc,
+                "Training Loss": total_loss / NUM_ITER_EVAL,
+                "Training Accuracy": float(total_correct) / float(total)
+            })
+
             print(msg.format(epoch, iter, val_acc, get_time_dif(start_time), improved, total_loss/ NUM_ITER_EVAL,
                              float(total_correct) / float(total)))
 
@@ -162,6 +194,11 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    current_time = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    log_filename = 'Log_' + str(current_time)
+
+    log_to_file(log_filename, f'dataset: {args.dataset}; ngram: {args.ngram}; dropout: {args.dropout}; trainable edges: {args.edges}; k: {args.k}')
+
     print('ngram: %d' % args.ngram)
     print('project_name: %s' % args.name)
     print('dataset: %s' % args.dataset)
@@ -184,7 +221,10 @@ if __name__ == '__main__':
     else:
         edges = False
 
-    model = train(args.ngram, args.name, args.wd, bar, args.dropout, args.num_hidden, args.num_layers, args.num_heads, args.k, args.alpha,dataset=args.dataset, is_cuda=True, edges=edges)
+    model = train(args.ngram, args.name, args.wd, bar, args.dropout, args.num_hidden, args.num_layers, args.num_heads, args.k, args.alpha,dataset=args.dataset, is_cuda=True, edges=edges, log_filename=log_filename)
     model.load_state_dict(torch.load('model.pth'))
     result = test(model, args.dataset)
     print('top-1 test acc: ', result)
+    log_to_file(log_filename, 'top-1 test acc: ' + str(result))
+
+

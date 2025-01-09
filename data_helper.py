@@ -5,7 +5,7 @@ import csv
 
 class DataHelper(object):
     def __init__(self, dataset, mode, vocab=None):
-        allowed_data = ['r8', 'r52', 'mr', 'SST1', 'SST2', 'IMDB', 'TREC', 'WebKB', 'DBLP', 'ag_news']
+        allowed_data = ['r8', 'r52', 'mr', 'SST1', 'SST2', 'IMDB', 'TREC', 'WebKB', 'DBLP', 'ag_news', 'amazon_review', 'sst-2', 'financial_phrases_all', 'tweeteval', 'stock_emotions']
 
         if dataset not in allowed_data:
             raise ValueError('currently allowed data: %s' % ','.join(allowed_data))
@@ -46,9 +46,9 @@ class DataHelper(object):
         with open(self.current_set) as f:
             all = f.read()
             content = [line.split('\t') for line in all.split('\n')]
-            #wrong_content = [line for line in all.split('\n') if len(line.split('\t')) != 2]
+            wrong_content = [line for line in all.split('\n') if len(line.split('\t')) != 2]
         
-        #print(wrong_content)
+        print(wrong_content)
        
         label, content = zip(*content)
 
@@ -59,6 +59,8 @@ class DataHelper(object):
         try:
             result = self.d[word]
         except KeyError:
+            print('Word at fault:')
+            print(word)
             result = self.d['UNK']
 
         return result
@@ -69,6 +71,7 @@ class DataHelper(object):
             self.vocab = vocab.split('\n')
 
     def batch_iter(self, batch_size, num_epoch):
+        
         for i in range(num_epoch):
             num_per_epoch = int(len(self.content) / batch_size)
             for batch_id in range(num_per_epoch):
