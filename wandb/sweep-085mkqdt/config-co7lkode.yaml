@@ -1,0 +1,8 @@
+wandb_version: 1
+
+dropout:
+  value: 0.3
+k:
+  value: 5
+ngram:
+  value: 4

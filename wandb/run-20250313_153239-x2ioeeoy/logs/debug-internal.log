@@ -1,0 +1,15 @@
+{"time":"2025-03-13T15:32:39.523761164+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.2","symlink path":"/home/caro/DADGNN/wandb/run-20250313_153239-x2ioeeoy/logs/debug-core.log"}
+{"time":"2025-03-13T15:32:39.627800268+01:00","level":"INFO","msg":"created new stream","id":"x2ioeeoy"}
+{"time":"2025-03-13T15:32:39.627820328+01:00","level":"INFO","msg":"stream: started","id":"x2ioeeoy"}
+{"time":"2025-03-13T15:32:39.627891668+01:00","level":"INFO","msg":"handler: started","stream_id":"x2ioeeoy"}
+{"time":"2025-03-13T15:32:39.628409414+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"x2ioeeoy"}
+{"time":"2025-03-13T15:32:39.628798662+01:00","level":"INFO","msg":"sender: started","stream_id":"x2ioeeoy"}
+{"time":"2025-03-13T15:32:40.00619695+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-13T15:32:44.36831866+01:00","level":"INFO","msg":"stream: closing","id":"x2ioeeoy"}
+{"time":"2025-03-13T15:32:44.374285973+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-13T15:32:44.374679531+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-13T15:32:44.967859228+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-13T15:32:45.222571959+01:00","level":"INFO","msg":"handler: closed","stream_id":"x2ioeeoy"}
+{"time":"2025-03-13T15:32:45.222596429+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"x2ioeeoy"}
+{"time":"2025-03-13T15:32:45.222629959+01:00","level":"INFO","msg":"sender: closed","stream_id":"x2ioeeoy"}
+{"time":"2025-03-13T15:32:45.222645809+01:00","level":"INFO","msg":"stream: closed","id":"x2ioeeoy"}

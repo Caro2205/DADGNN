@@ -1,0 +1,20 @@
+[2025-01-14 18:16:28] dataset: sst-2; ngram: 4; dropout: 0.5; trainable edges: 1; k: 2; hidden layers: 64; attention heads: 2; weight decay: 1e-06
+[2025-01-14 18:16:59] Iter: 100; Validation Accuracy: 0.7773438096046448; Best Accuracy: 0.7773438096046448
+[2025-01-14 18:17:04] Iter: 200; Validation Accuracy: 0.8063616156578064; Best Accuracy: 0.8063616156578064
+[2025-01-14 18:17:09] Iter: 300; Validation Accuracy: 0.7907366156578064; Best Accuracy: 0.8063616156578064
+[2025-01-14 18:17:15] Iter: 400; Validation Accuracy: 0.8164063096046448; Best Accuracy: 0.8164063096046448
+[2025-01-14 18:17:20] Iter: 500; Validation Accuracy: 0.8186384439468384; Best Accuracy: 0.8186384439468384
+[2025-01-14 18:17:25] Iter: 600; Validation Accuracy: 0.8186384439468384; Best Accuracy: 0.8186384439468384
+[2025-01-14 18:17:31] Iter: 700; Validation Accuracy: 0.8136160969734192; Best Accuracy: 0.8186384439468384
+[2025-01-14 18:17:36] Iter: 800; Validation Accuracy: 0.8197544813156128; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:17:41] Iter: 900; Validation Accuracy: 0.8164063096046448; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:17:47] Iter: 1000; Validation Accuracy: 0.8085938096046448; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:17:52] Iter: 1100; Validation Accuracy: 0.809151828289032; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:17:57] Iter: 1200; Validation Accuracy: 0.8024553656578064; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:18:03] Iter: 1300; Validation Accuracy: 0.8058035969734192; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:18:08] Iter: 1400; Validation Accuracy: 0.8002232313156128; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:18:13] Iter: 1500; Validation Accuracy: 0.801339328289032; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:18:18] Iter: 1600; Validation Accuracy: 0.7823660969734192; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:18:24] Iter: 1700; Validation Accuracy: 0.8080357313156128; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:18:29] Iter: 1800; Validation Accuracy: 0.7963169813156128; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:18:35] top-1 test acc: 0.8197545

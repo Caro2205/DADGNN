@@ -1,0 +1,1 @@
+[2025-03-13 15:38:27] dataset: sst-2; ngram: 5; dropout: 0.5; trainable edges: 1; k: 4; hidden layers: 64; attention heads: 2; weight decay: 1e-06

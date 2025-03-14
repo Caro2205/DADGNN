@@ -1,0 +1,3 @@
+usage: train_pre.py [-h] [--ngram NGRAM] [--name NAME] [--bar BAR] [--wd WD] [--dropout DROPOUT] [--num_hidden NUM_HIDDEN] [--num_layers NUM_LAYERS] [--num_heads NUM_HEADS] [--k K]
+                    [--alpha ALPHA] --dataset DATASET [--edges EDGES] [--rand RAND] [--wandb WANDB]
+train_pre.py: error: argument --wandb: expected one argument

@@ -1,0 +1,19 @@
+[2025-02-17 12:31:51] dataset: sst-2; ngram: 4; dropout: 0.5; trainable edges: 1; k: 2; hidden layers: 64; attention heads: 2; weight decay: 1e-06
+[2025-02-17 12:32:51] Iter: 100; Validation Accuracy: 0.6573660969734192; Best Accuracy: 0.6573660969734192
+[2025-02-17 12:32:57] Iter: 200; Validation Accuracy: 0.7912946939468384; Best Accuracy: 0.7912946939468384
+[2025-02-17 12:33:03] Iter: 300; Validation Accuracy: 0.7985491156578064; Best Accuracy: 0.7985491156578064
+[2025-02-17 12:33:09] Iter: 400; Validation Accuracy: 0.7940848469734192; Best Accuracy: 0.7985491156578064
+[2025-02-17 12:33:15] Iter: 500; Validation Accuracy: 0.7968750596046448; Best Accuracy: 0.7985491156578064
+[2025-02-17 12:33:21] Iter: 600; Validation Accuracy: 0.8035714626312256; Best Accuracy: 0.8035714626312256
+[2025-02-17 12:33:28] Iter: 700; Validation Accuracy: 0.8041294813156128; Best Accuracy: 0.8041294813156128
+[2025-02-17 12:33:34] Iter: 800; Validation Accuracy: 0.8018973469734192; Best Accuracy: 0.8041294813156128
+[2025-02-17 12:33:40] Iter: 900; Validation Accuracy: 0.7924107313156128; Best Accuracy: 0.8041294813156128
+[2025-02-17 12:33:47] Iter: 1000; Validation Accuracy: 0.7963169813156128; Best Accuracy: 0.8041294813156128
+[2025-02-17 12:33:53] Iter: 1100; Validation Accuracy: 0.7767857313156128; Best Accuracy: 0.8041294813156128
+[2025-02-17 12:33:59] Iter: 1200; Validation Accuracy: 0.7929688096046448; Best Accuracy: 0.8041294813156128
+[2025-02-17 12:34:05] Iter: 1300; Validation Accuracy: 0.7606027126312256; Best Accuracy: 0.8041294813156128
+[2025-02-17 12:34:11] Iter: 1400; Validation Accuracy: 0.7890625596046448; Best Accuracy: 0.8041294813156128
+[2025-02-17 12:34:17] Iter: 1500; Validation Accuracy: 0.7862723469734192; Best Accuracy: 0.8041294813156128
+[2025-02-17 12:34:23] Iter: 1600; Validation Accuracy: 0.7672991156578064; Best Accuracy: 0.8041294813156128
+[2025-02-17 12:34:29] Iter: 1700; Validation Accuracy: 0.7706473469734192; Best Accuracy: 0.8041294813156128
+[2025-02-17 12:34:36] top-1 test acc: 0.8041295

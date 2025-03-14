@@ -1,0 +1,15 @@
+{"time":"2025-03-13T15:34:14.78084584+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.2","symlink path":"/home/caro/DADGNN/wandb/run-20250313_153414-ui21qe8j/logs/debug-core.log"}
+{"time":"2025-03-13T15:34:14.883166025+01:00","level":"INFO","msg":"created new stream","id":"ui21qe8j"}
+{"time":"2025-03-13T15:34:14.883181065+01:00","level":"INFO","msg":"stream: started","id":"ui21qe8j"}
+{"time":"2025-03-13T15:34:14.883195195+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"ui21qe8j"}
+{"time":"2025-03-13T15:34:14.883199485+01:00","level":"INFO","msg":"sender: started","stream_id":"ui21qe8j"}
+{"time":"2025-03-13T15:34:14.883218545+01:00","level":"INFO","msg":"handler: started","stream_id":"ui21qe8j"}
+{"time":"2025-03-13T15:34:15.153221821+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-13T15:34:19.59400405+01:00","level":"INFO","msg":"stream: closing","id":"ui21qe8j"}
+{"time":"2025-03-13T15:34:19.59402119+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-13T15:34:19.594314178+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-13T15:34:20.461305459+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-13T15:34:20.643354261+01:00","level":"INFO","msg":"handler: closed","stream_id":"ui21qe8j"}
+{"time":"2025-03-13T15:34:20.643376081+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ui21qe8j"}
+{"time":"2025-03-13T15:34:20.64339309+01:00","level":"INFO","msg":"sender: closed","stream_id":"ui21qe8j"}
+{"time":"2025-03-13T15:34:20.64342391+01:00","level":"INFO","msg":"stream: closed","id":"ui21qe8j"}

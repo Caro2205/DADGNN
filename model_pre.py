@@ -5,6 +5,7 @@ import numpy as np
 import gensim
 from attention_diffusion import GATNet
 from dgl.nn.pytorch.glob import WeightAndSum
+from transformers import BertTokenizer, BertModel
 
 
 class Model(torch.nn.Module):
@@ -27,9 +28,17 @@ class Model(torch.nn.Module):
         self.is_cuda = cuda
         self.vocab = vocab
 
-        self.node_hidden = torch.nn.Embedding(len(vocab), num_feats)
-        self.node_hidden.weight.data.copy_(torch.tensor(self.load_word2vec('data/glove.6B.300d.txt')))
-        self.node_hidden.weight.requires_grad = True
+        # load bert model and tokenizer and use bert embeddings instead of glove vectors
+        self.bert_tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+        self.bert_model = BertModel.from_pretrained('bert-base-uncased')
+        self.bert_hidden_size = self.bert_model.config.hidden_size
+
+        self.node_hidden = torch.nn.Embedding(len(vocab), self.bert_hidden_size)
+        self.node_hidden.weight.data.copy_(self.load_bert_embeddings(self.vocab))
+
+        #self.node_hidden = torch.nn.Embedding(len(vocab), num_feats) #original
+        #self.node_hidden.weight.data.copy_(torch.tensor(self.load_word2vec('data/glove.6B.300d.txt'))) #original
+        self.node_hidden.weight.requires_grad = True # original
 
         self.len_vocab = len(vocab)
         self.ngram = n_gram
@@ -45,6 +54,32 @@ class Model(torch.nn.Module):
         self.bn2 = torch.nn.BatchNorm1d(class_num)        
         self.weight_and_sum = WeightAndSum(class_num)
 
+        input_sequences = ["short sequence", "very long sequence that might exceed the limit of the model"]
+
+        # Tokenize with truncation
+        tokenized_inputs = self.bert_tokenizer(
+            input_sequences,
+            padding=True,          # Pads to the longest sequence in the batch
+            truncation=True,       # Truncates sequences to max_length
+            max_length=128,        # Set a reasonable max_length
+            return_tensors="pt"    # Return PyTorch tensors
+        )
+
+        print(tokenized_inputs)
+
+    def load_bert_embeddings(self, vocab):
+        """Generate BERT embeddings for the vocabulary."""
+        embeddings = []
+        for word in vocab:
+            # Tokenize the word and get its BERT embeddings
+            inputs = self.bert_tokenizer(word, return_tensors='pt', truncation=True, max_length=128)
+            outputs = self.bert_model(**inputs)
+            # Use the [CLS] token embedding as the representation
+            word_embedding = outputs.last_hidden_state[:, 0, :].squeeze(0)
+            embeddings.append(word_embedding.detach())  # Detach to avoid gradient computation
+
+        # Stack embeddings into a tensor
+        return torch.stack(embeddings)
     
     def reset(self):
       gain = torch.nn.init.calculate_gain("relu")

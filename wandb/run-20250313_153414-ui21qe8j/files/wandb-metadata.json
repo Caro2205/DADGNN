@@ -1,0 +1,36 @@
+{
+  "os":  "Linux-6.8.0-52-generic-x86_64-with-glibc2.35",
+  "python":  "CPython 3.10.12",
+  "startedAt":  "2025-03-13T14:34:14.779346Z",
+  "args":  [
+    "--dataset",
+    "sst-2",
+    "--wandb"
+  ],
+  "program":  "/home/caro/DADGNN/train_pre.py",
+  "codePath":  "train_pre.py",
+  "git":  {
+    "remote":  "https://github.com/Caro2205/DADGNN.git",
+    "commit":  "3a950833d100859299eabc5a1561ed962cc7f4cd"
+  },
+  "email":  "carolinwengert@gmail.com",
+  "root":  "/home/caro/DADGNN",
+  "host":  "caro-MS-7D75",
+  "executable":  "/home/caro/DADGNN/dadgnn_env/bin/python3",
+  "codePathLocal":  "train_pre.py",
+  "cpu_count":  8,
+  "cpu_count_logical":  16,
+  "disk":  {
+    "/":  {
+      "total":  "686659452928",
+      "used":  "509042130944"
+    }
+  },
+  "memory":  {
+    "total":  "33320153088"
+  },
+  "cpu":  {
+    "count":  8,
+    "countLogical":  16
+  }
+}

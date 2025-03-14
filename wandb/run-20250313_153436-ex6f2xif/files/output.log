@@ -1,0 +1,5 @@
+ngram: 4
+project_name: model
+dataset: sst-2
+trainable_edges: 1
+trainable edges

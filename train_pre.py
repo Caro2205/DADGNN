@@ -14,6 +14,31 @@ warnings.filterwarnings("ignore")
 NUM_ITER_EVAL = 100
 EARLY_STOP_EPOCH = 10
 
+# to run this
+# source dadgnn_env/bin/activate
+# swap OUT of dadgnn folder
+# python3 DADGNN/train_pre.py --dataset sst2 --wandb True
+
+logs_folder = 'bert_results_high_p/sst2_sweep'
+
+os.makedirs(logs_folder, exist_ok=True)
+
+###### parameter tuning stuff
+sweep_configuration = {
+    "method": "bayes",
+    "name": "sweep",
+    "metric": {"goal": "maximize", "name": "val_acc"},
+    "parameters": {
+        "dropout": {"values": [0.3, 0.5]},
+        "k": {"values": [4, 5, 6]},
+        #"wd": {"values": [1e-05, 1e-07, 1e-09]},
+        "ngram": {"values": [4, 5]}
+    }
+}
+
+sweep_id = wandb.sweep(sweep=sweep_configuration, project="my-first-sweep")
+#################################################
+
 
 def get_time_dif(start_time):
     end_time = time.time()
@@ -22,7 +47,7 @@ def get_time_dif(start_time):
 
 def log_to_file(filename, message):
     safe_filename = filename.replace(":", "-").replace(" ", "_")
-    with open('DADGNN/logs/' + safe_filename, "a") as file:
+    with open(f'DADGNN/{logs_folder}/{safe_filename}', "a") as file: 
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         file.write(f"[{timestamp}] {message}\n")
     print(f"Logged to {safe_filename}: {message}")
@@ -73,20 +98,30 @@ def test(model, dataset):
 
 def train(ngram, name, wd, bar, drop_out, num_hidden, num_layers, num_heads, k, alpha, dataset, is_cuda, log_filename, edges=True):
 
-    # initialize logging with wandb
-    wandb.init(project=name,
-               config={
-                   "dataset": dataset,
-                   "k": k,
-                   "dropout": drop_out,
-                   "N hidden layers": num_hidden,
-                   "N layers": num_layers,
-                   "N attention heads": num_heads,
-                   "weight decay": wd,
-                   "alpha": alpha,
-                   "trainable edges": edges,
-                   "random seed": args.rand
-               })
+    #parameters_dict.update({
+    #'dataset': {
+    #    'value': dataset},
+    #'num_layers': {
+    #    'value': num_layers},
+    #'alpha': {
+    #    'value': alpha},
+    #'trainable_edges': {
+    #    'value': edges},
+    #'seed': {
+    #    'value': args.rand},
+    #})
+    
+    #wandb.init(project=name, config=set_config)
+    #print("CONFIGGGG")
+    #print(wandb.config)
+    #config = wandb.config
+    #if config == {}: print('ERROR: Config file is empty.')
+    
+    #drop_out = config.dropout
+    #wd = config.wd
+    #num_heads = config["attention_heads"]
+    #k = config["k"]
+    #num_hidden = config["hidden_layers"]
 
     print('load data helper.')
     path = 'DADGNN/data/' + dataset + '/' + dataset + '-vocab.txt'
@@ -95,7 +130,7 @@ def train(ngram, name, wd, bar, drop_out, num_hidden, num_layers, num_heads, k, 
       vocab = vocab.split('\n')
     data_helper = DataHelper(dataset=dataset, mode='train', vocab=vocab)
     model = Model(num_hidden, num_layers, num_heads, k, alpha,
-                      vocab=data_helper.vocab, n_gram=ngram, drop_out=drop_out, class_num=len(data_helper.labels_str), num_feats=300)
+                      vocab=data_helper.vocab, n_gram=ngram, drop_out=drop_out, class_num=len(data_helper.labels_str), num_feats=768) #change num_feats here for glove 300 and for bert 768
     
     dev_data_helper = DataHelper(dataset=dataset, mode='dev', vocab=vocab)
     if is_cuda:
@@ -175,8 +210,12 @@ def train(ngram, name, wd, bar, drop_out, num_hidden, num_layers, num_heads, k, 
     return model
 
 
+#make this to def main() -> get arguments through wandb if set to true, otherwise do the same
+# in wandb the use function=main for sweeping
+# https://docs.wandb.ai/guides/sweeps/add-w-and-b-to-your-code/
+def main():
+    run = wandb.init()
 
-if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--ngram', required=False, type=int, default=4, help='ngram number')
     parser.add_argument('--name', required=False, type=str, default='model', help='project name')
@@ -191,13 +230,14 @@ if __name__ == '__main__':
     parser.add_argument('--dataset', required=True, type=str, help='dataset')
     parser.add_argument('--edges', required=False, type=int, default=1, help='trainable edges')
     parser.add_argument('--rand', required=False, type=int, default=42, help='rand_seed')
+    parser.add_argument('--wandb', required=False, type=bool, default=False, help='use wandb')
 
     args = parser.parse_args()
 
     current_time = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     log_filename = 'Log_' + str(current_time)
 
-    log_to_file(log_filename, f'dataset: {args.dataset}; ngram: {args.ngram}; dropout: {args.dropout}; trainable edges: {args.edges}; k: {args.k}')
+    #log_to_file(log_filename, f'dataset: {args.dataset}; ngram: {args.ngram}; dropout: {args.dropout}; trainable edges: {args.edges}; k: {args.k}')
 
     print('ngram: %d' % args.ngram)
     print('project_name: %s' % args.name)
@@ -221,6 +261,17 @@ if __name__ == '__main__':
     else:
         edges = False
 
+    if args.wandb == True:
+        #sweep_id = wandb.sweep(sweep=set_config, project="my-first-sweep")
+        args.dropout = wandb.config.dropout
+        #args.wd = wandb.config.wd
+        #args.num_heads = wandb.config.attention_heads
+        args.k = wandb.config.k
+        #args.num_hidden = wandb.config.hidden_layers
+        args.ngram = wandb.config.ngram
+
+    log_to_file(log_filename, f'dataset: {args.dataset}; ngram: {args.ngram}; dropout: {args.dropout}; trainable edges: {args.edges}; k: {args.k}; hidden layers: {args.num_hidden}; attention heads: {args.num_heads}; weight decay: {args.wd}')
+    
     model = train(args.ngram, args.name, args.wd, bar, args.dropout, args.num_hidden, args.num_layers, args.num_heads, args.k, args.alpha,dataset=args.dataset, is_cuda=True, edges=edges, log_filename=log_filename)
     model.load_state_dict(torch.load('model.pth'))
     result = test(model, args.dataset)
@@ -228,3 +279,4 @@ if __name__ == '__main__':
     log_to_file(log_filename, 'top-1 test acc: ' + str(result))
 
 
+wandb.agent(sweep_id, function=main)

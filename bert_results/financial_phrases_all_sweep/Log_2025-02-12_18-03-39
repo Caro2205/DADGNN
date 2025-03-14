@@ -1,0 +1,6 @@
+[2025-02-12 18:03:39] dataset: financial_phrases_all; ngram: 4; dropout: 0.3; trainable edges: 1; k: 3; hidden layers: 64; attention heads: 2; weight decay: 1e-06
+[2025-02-12 18:04:03] Iter: 100; Validation Accuracy: 0.7633928656578064; Best Accuracy: 0.7633928656578064
+[2025-02-12 18:04:09] Iter: 200; Validation Accuracy: 0.879464328289032; Best Accuracy: 0.879464328289032
+[2025-02-12 18:04:15] Iter: 300; Validation Accuracy: 0.879464328289032; Best Accuracy: 0.879464328289032
+[2025-02-12 18:04:20] Iter: 400; Validation Accuracy: 0.848214328289032; Best Accuracy: 0.879464328289032
+[2025-02-12 18:04:26] top-1 test acc: 0.8794643

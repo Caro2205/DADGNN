@@ -1,0 +1,37 @@
+2025-03-13 15:34:20,973 INFO    Thread-5 (_run_job):118836 [wandb_setup.py:_flush():68] Current SDK version is 0.19.2
+2025-03-13 15:34:20,973 INFO    Thread-5 (_run_job):118836 [wandb_setup.py:_flush():68] Configure stats pid to 118836
+2025-03-13 15:34:20,973 INFO    Thread-5 (_run_job):118836 [wandb_setup.py:_flush():68] Loading settings from /home/caro/.config/wandb/settings
+2025-03-13 15:34:20,973 INFO    Thread-5 (_run_job):118836 [wandb_setup.py:_flush():68] Loading settings from /home/caro/DADGNN/wandb/settings
+2025-03-13 15:34:20,973 INFO    Thread-5 (_run_job):118836 [wandb_setup.py:_flush():68] Loading settings from environment variables
+2025-03-13 15:34:20,973 INFO    Thread-5 (_run_job):118836 [wandb_init.py:_log_setup():523] Logging user logs to /home/caro/DADGNN/wandb/run-20250313_153420-ef2xtz5h/logs/debug.log
+2025-03-13 15:34:20,973 INFO    Thread-5 (_run_job):118836 [wandb_init.py:_log_setup():524] Logging internal logs to /home/caro/DADGNN/wandb/run-20250313_153420-ef2xtz5h/logs/debug-internal.log
+2025-03-13 15:34:20,973 INFO    Thread-5 (_run_job):118836 [wandb_init.py:init():641] calling init triggers
+2025-03-13 15:34:20,973 INFO    Thread-5 (_run_job):118836 [wandb_init.py:init():647] wandb.init called with sweep_config: {'dropout': 0.3, 'k': 5, 'ngram': 4}
+config: {}
+2025-03-13 15:34:20,973 INFO    Thread-5 (_run_job):118836 [wandb_init.py:init():669] wandb.init() called when a run is still active
+2025-03-13 15:34:20,973 ERROR   Thread-5 (_run_job):118836 [wandb_init.py:init():1299] error in wandb.init()
+Traceback (most recent call last):
+  File "/home/caro/DADGNN/dadgnn_env/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1289, in init
+    return wi.init()
+  File "/home/caro/DADGNN/dadgnn_env/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 670, in init
+    with telemetry.context() as tel:
+  File "/home/caro/DADGNN/dadgnn_env/lib/python3.10/site-packages/wandb/sdk/lib/telemetry.py", line 42, in __exit__
+    self._run._telemetry_callback(self._obj)
+  File "/home/caro/DADGNN/dadgnn_env/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 771, in _telemetry_callback
+    self._telemetry_flush()
+  File "/home/caro/DADGNN/dadgnn_env/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 784, in _telemetry_flush
+    self._backend.interface._publish_telemetry(self._telemetry_obj)
+  File "/home/caro/DADGNN/dadgnn_env/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 101, in _publish_telemetry
+    self._publish(rec)
+  File "/home/caro/DADGNN/dadgnn_env/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/home/caro/DADGNN/dadgnn_env/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 222, in send_record_publish
+    self.send_server_request(server_req)
+  File "/home/caro/DADGNN/dadgnn_env/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/home/caro/DADGNN/dadgnn_env/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/home/caro/DADGNN/dadgnn_env/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2025-03-13 15:34:20,977 INFO    Thread-5 (_run_job):118836 [wandb_run.py:_finish():2140] finishing run carolin-master/my-first-sweep/ui21qe8j

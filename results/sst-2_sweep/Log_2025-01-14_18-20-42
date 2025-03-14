@@ -1,0 +1,19 @@
+[2025-01-14 18:20:42] dataset: sst-2; ngram: 4; dropout: 0.5; trainable edges: 1; k: 3; hidden layers: 64; attention heads: 2; weight decay: 1e-06
+[2025-01-14 18:21:13] Iter: 100; Validation Accuracy: 0.7873884439468384; Best Accuracy: 0.7873884439468384
+[2025-01-14 18:21:20] Iter: 200; Validation Accuracy: 0.8018973469734192; Best Accuracy: 0.8018973469734192
+[2025-01-14 18:21:26] Iter: 300; Validation Accuracy: 0.8018973469734192; Best Accuracy: 0.8018973469734192
+[2025-01-14 18:21:32] Iter: 400; Validation Accuracy: 0.8175223469734192; Best Accuracy: 0.8175223469734192
+[2025-01-14 18:21:38] Iter: 500; Validation Accuracy: 0.8175223469734192; Best Accuracy: 0.8175223469734192
+[2025-01-14 18:21:44] Iter: 600; Validation Accuracy: 0.8164063096046448; Best Accuracy: 0.8175223469734192
+[2025-01-14 18:21:50] Iter: 700; Validation Accuracy: 0.8197544813156128; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:21:56] Iter: 800; Validation Accuracy: 0.8191964626312256; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:22:02] Iter: 900; Validation Accuracy: 0.8119419813156128; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:22:08] Iter: 1000; Validation Accuracy: 0.801339328289032; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:22:14] Iter: 1100; Validation Accuracy: 0.8080357313156128; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:22:20] Iter: 1200; Validation Accuracy: 0.8085938096046448; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:22:26] Iter: 1300; Validation Accuracy: 0.7901785969734192; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:22:32] Iter: 1400; Validation Accuracy: 0.8119419813156128; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:22:38] Iter: 1500; Validation Accuracy: 0.7957589626312256; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:22:44] Iter: 1600; Validation Accuracy: 0.781808078289032; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:22:50] Iter: 1700; Validation Accuracy: 0.8007813096046448; Best Accuracy: 0.8197544813156128
+[2025-01-14 18:22:57] top-1 test acc: 0.8197545

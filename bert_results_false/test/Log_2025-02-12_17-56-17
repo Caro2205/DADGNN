@@ -1,0 +1,1 @@
+[2025-02-12 17:56:18] dataset: financial_phrases_all; ngram: 4; dropout: 0.5; trainable edges: 1; k: 5; hidden layers: 64; attention heads: 2; weight decay: 1e-06

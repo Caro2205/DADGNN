@@ -1,0 +1,16 @@
+[2025-01-14 18:10:16] dataset: sst-2; ngram: 5; dropout: 0.3; trainable edges: 1; k: 2; hidden layers: 64; attention heads: 2; weight decay: 1e-06
+[2025-01-14 18:10:47] Iter: 100; Validation Accuracy: 0.789620578289032; Best Accuracy: 0.789620578289032
+[2025-01-14 18:10:53] Iter: 200; Validation Accuracy: 0.813058078289032; Best Accuracy: 0.813058078289032
+[2025-01-14 18:10:58] Iter: 300; Validation Accuracy: 0.7929688096046448; Best Accuracy: 0.813058078289032
+[2025-01-14 18:11:03] Iter: 400; Validation Accuracy: 0.8203125596046448; Best Accuracy: 0.8203125596046448
+[2025-01-14 18:11:09] Iter: 500; Validation Accuracy: 0.8175223469734192; Best Accuracy: 0.8203125596046448
+[2025-01-14 18:11:14] Iter: 600; Validation Accuracy: 0.8125000596046448; Best Accuracy: 0.8203125596046448
+[2025-01-14 18:11:19] Iter: 700; Validation Accuracy: 0.8080357313156128; Best Accuracy: 0.8203125596046448
+[2025-01-14 18:11:25] Iter: 800; Validation Accuracy: 0.7918527126312256; Best Accuracy: 0.8203125596046448
+[2025-01-14 18:11:30] Iter: 900; Validation Accuracy: 0.7912946939468384; Best Accuracy: 0.8203125596046448
+[2025-01-14 18:11:35] Iter: 1000; Validation Accuracy: 0.7868303656578064; Best Accuracy: 0.8203125596046448
+[2025-01-14 18:11:41] Iter: 1100; Validation Accuracy: 0.7918527126312256; Best Accuracy: 0.8203125596046448
+[2025-01-14 18:11:46] Iter: 1200; Validation Accuracy: 0.7823660969734192; Best Accuracy: 0.8203125596046448
+[2025-01-14 18:11:51] Iter: 1300; Validation Accuracy: 0.7873884439468384; Best Accuracy: 0.8203125596046448
+[2025-01-14 18:11:57] Iter: 1400; Validation Accuracy: 0.7929688096046448; Best Accuracy: 0.8203125596046448
+[2025-01-14 18:12:03] top-1 test acc: 0.82031256
